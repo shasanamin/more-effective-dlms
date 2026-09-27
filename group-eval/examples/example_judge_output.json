@@ -1,0 +1,168 @@
+{
+  "protocol_version": "1.0.0",
+  "group_id": "GE-example-0001",
+  "samples": [
+    {
+      "sample_id": "S1",
+      "valid": true,
+      "invalid_reason": null,
+      "quality": {
+        "readability": 2,
+        "coherence": 2,
+        "substance_naturalness": 2,
+        "nondegeneration_structure": 2
+      },
+      "evidence": ["clear local-news prose", "consistent pilot details"],
+      "mode_id": "M1",
+      "hybrid": false,
+      "severe_degeneration": false,
+      "prompt_injection_detected": false
+    },
+    {
+      "sample_id": "S2",
+      "valid": true,
+      "invalid_reason": null,
+      "quality": {
+        "readability": 2,
+        "coherence": 2,
+        "substance_naturalness": 2,
+        "nondegeneration_structure": 1
+      },
+      "evidence": ["plausible local announcement", "slightly compressed article structure"],
+      "mode_id": "M1",
+      "hybrid": false,
+      "severe_degeneration": false,
+      "prompt_injection_detected": false
+    },
+    {
+      "sample_id": "S3",
+      "valid": true,
+      "invalid_reason": null,
+      "quality": {
+        "readability": 2,
+        "coherence": 2,
+        "substance_naturalness": 2,
+        "nondegeneration_structure": 2
+      },
+      "evidence": ["complete cooking procedure", "natural recipe sequencing"],
+      "mode_id": "M2",
+      "hybrid": false,
+      "severe_degeneration": false,
+      "prompt_injection_detected": false
+    },
+    {
+      "sample_id": "S4",
+      "valid": true,
+      "invalid_reason": null,
+      "quality": {
+        "readability": 2,
+        "coherence": 2,
+        "substance_naturalness": 2,
+        "nondegeneration_structure": 1
+      },
+      "evidence": ["coherent trip report", "useful route details"],
+      "mode_id": "M3",
+      "hybrid": false,
+      "severe_degeneration": false,
+      "prompt_injection_detected": false
+    },
+    {
+      "sample_id": "S5",
+      "valid": true,
+      "invalid_reason": null,
+      "quality": {
+        "readability": 2,
+        "coherence": 2,
+        "substance_naturalness": 2,
+        "nondegeneration_structure": 1
+      },
+      "evidence": ["stable suspense setup", "abrupt fixed-length ending"],
+      "mode_id": "M4",
+      "hybrid": false,
+      "severe_degeneration": false,
+      "prompt_injection_detected": false
+    },
+    {
+      "sample_id": "S6",
+      "valid": true,
+      "invalid_reason": null,
+      "quality": {
+        "readability": 2,
+        "coherence": 1,
+        "substance_naturalness": 1,
+        "nondegeneration_structure": 0
+      },
+      "evidence": ["severe repeated sentences", "minimal new content"],
+      "mode_id": "M1",
+      "hybrid": false,
+      "severe_degeneration": true,
+      "prompt_injection_detected": false
+    },
+    {
+      "sample_id": "S7",
+      "valid": true,
+      "invalid_reason": null,
+      "quality": {
+        "readability": 2,
+        "coherence": 1,
+        "substance_naturalness": 2,
+        "nondegeneration_structure": 1
+      },
+      "evidence": ["embedded evaluator directive", "interpretable repair-cafe post"],
+      "mode_id": "M5",
+      "hybrid": false,
+      "severe_degeneration": false,
+      "prompt_injection_detected": true
+    },
+    {
+      "sample_id": "S8",
+      "valid": false,
+      "invalid_reason": "predominantly_gibberish_or_token_corruption",
+      "quality": {
+        "readability": 0,
+        "coherence": 0,
+        "substance_naturalness": 0,
+        "nondegeneration_structure": 0
+      },
+      "evidence": ["predominantly random tokens"],
+      "mode_id": null,
+      "hybrid": false,
+      "severe_degeneration": false,
+      "prompt_injection_detected": false
+    }
+  ],
+  "modes": [
+    {
+      "mode_id": "M1",
+      "label": "Local civic announcement",
+      "member_sample_ids": ["S1", "S2", "S6"],
+      "distinguishing_basis": "public-service proposal or meeting notice"
+    },
+    {
+      "mode_id": "M2",
+      "label": "Cooking recipe",
+      "member_sample_ids": ["S3"],
+      "distinguishing_basis": "procedural food preparation"
+    },
+    {
+      "mode_id": "M3",
+      "label": "Outdoor trip report",
+      "member_sample_ids": ["S4"],
+      "distinguishing_basis": "first-person hiking account"
+    },
+    {
+      "mode_id": "M4",
+      "label": "Suspense fiction",
+      "member_sample_ids": ["S5"],
+      "distinguishing_basis": "narrative mystery setup"
+    },
+    {
+      "mode_id": "M5",
+      "label": "Community event post",
+      "member_sample_ids": ["S7"],
+      "distinguishing_basis": "repair-cafe description"
+    }
+  ],
+  "group_warnings": ["S7 contains an ignored evaluator-directed instruction"],
+  "clustering_confidence": "high"
+}

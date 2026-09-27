@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/groupeval/conditional_group_input.schema.json",
+  "title": "Conditional large-DLM GEQ blinded group input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol_version",
+    "group_id",
+    "target_profile_id",
+    "task_name",
+    "condition",
+    "samples"
+  ],
+  "properties": {
+    "protocol_version": {"const": "1.0.0-conditional-large-dlm"},
+    "group_id": {"type": "string", "minLength": 1, "maxLength": 200},
+    "target_profile_id": {"const": "large-dlm-tasks-v1"},
+    "task_name": {"enum": ["gsm8k", "humaneval"]},
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["condition_id", "text"],
+      "properties": {
+        "condition_id": {
+          "type": "string",
+          "pattern": "^(gsm8k|humaneval):[0-9]+$"
+        },
+        "text": {"type": "string", "minLength": 1}
+      }
+    },
+    "samples": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["sample_id", "response"],
+        "properties": {
+          "sample_id": {
+            "type": "string",
+            "pattern": "^S[12]$"
+          },
+          "response": {"type": "string"}
+        }
+      }
+    }
+  }
+}

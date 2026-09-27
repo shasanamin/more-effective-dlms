@@ -1,0 +1,246 @@
+protocol:
+  name: GroupEval
+  version: 1.0.0
+  released: 2026-07-24
+  status: proposed_exploratory_not_human_validated
+  purpose: >-
+    Blinded, group-based LLM judging of unconditional English generations,
+    reporting perceived group quality (GEQ) and meaningful group diversity (GED)
+    as separate diagnostics.
+  scientific_principle: >-
+    Optimize quality primarily; treat diversity as a predeclared sufficiency or
+    non-inferiority constraint rather than a quantity that must always be maximized.
+  non_claims:
+    - Does not estimate the true data distribution.
+    - Does not certify total variation, likelihood correctness, or complete mode coverage.
+    - Does not replace human validation.
+    - Does not make scores from different judge snapshots interchangeable.
+
+scope:
+  language: English
+  task: unconditional_generation
+  default_domain_profile: owt1024-v1
+  nominal_length_tokens: 1024
+  out_of_scope:
+    - instruction_following
+    - factual_question_answering
+    - dialogue_helpfulness
+    - code_correctness
+    - safety_compliance
+
+sampling_design:
+  samples_per_system: 128
+  group_size: 8
+  groups_per_partition: 16
+  random_partitions: 2
+  grouping_seeds: [271828, 314159]
+  same_index_groups_across_methods: true
+  optimize_second_partition_to_reduce_repeated_pairs: true
+  full_text_default: true
+  context_limited_fallback:
+    allowed: true
+    canonical: false
+    method: deterministic_beginning_middle_end_windows
+    windows_gpt2_bpe_tokens: [256, 256, 256]
+    placement: beginning_centered_middle_end
+    preserve_order_and_add_boundary_markers: true
+    disclose_as_protocol_deviation: true
+    pooling_with_full_text_v1_results: prohibited
+
+judge:
+  role: reference_design_not_inst_pilot
+  provider: openai
+  model_snapshot: gpt-5.4-2026-03-05
+  reasoning_effort: none
+  temperature: omit_unless_supported
+  provider_seed: null
+  tools: disabled
+  web_browsing: disabled
+  response_format: strict_json_schema
+  calls_per_group: 1
+  second_judge_audit_fraction: 0.10
+  recommended_audit_snapshot: gpt-5.4-mini-2026-03-17
+  score_interchangeability_across_snapshots: false
+  substitute_rule: >-
+    A substitute judge must be identified by an immutable version, run with the same
+    prompt/schema, and pass the validation suite before its scores are reported as
+    GroupEval v1 results. Scores from different judges must be reported separately.
+  paper_pilot:
+    provider: institutional_genai
+    primary_model_alias: "gpt-oss:120b"
+    optional_audit_model_alias: "qwen3.6:27b"
+    immutable_revision_available: false
+    status: exploratory_substitute_judge_series
+    pooling_with_other_judges: prohibited
+    required_extra_metadata:
+      - access_timestamp_utc
+      - returned_model_identifier
+      - returned_serving_fingerprint
+      - raw_response_sha256
+
+blinding:
+  hide_method_name: true
+  hide_model_name: true
+  hide_sampler_settings: true
+  strip_provenance_metadata: true
+  randomize_order_within_group: true
+  use_group_local_display_ids: true
+
+quality:
+  dimensions:
+    readability:
+      scale: [0, 1, 2]
+      label: Readability and local fluency
+    coherence:
+      scale: [0, 1, 2]
+      label: Local/global coherence and continuity
+    substance_naturalness:
+      scale: [0, 1, 2]
+      label: Meaningful substance and target-domain naturalness
+    nondegeneration_structure:
+      scale: [0, 1, 2]
+      label: Non-degeneration and usable document structure
+  sample_score_formula: "q_i = 1.25 * sum_d s_{i,d}; invalid samples have q_i = 0"
+  group_geq_formula: "GEQ_g = (1/n) * sum_i q_i"
+  system_geq_formula: >-
+    Average each sample's q_i across its partition contexts, then average over the
+    128 samples. This is algebraically equivalent to the equal-weight mean over
+    complete fixed-size groups, but retains sample-level bootstrap units.
+  primary_aggregation: mean_including_invalid_zeroes
+  required_diagnostics:
+    - invalid_rate
+    - quality_p10
+    - bottom_quartile_mean
+    - severe_degeneration_rate
+    - per_dimension_means
+
+validity:
+  invalid_if:
+    - empty_or_nearly_empty
+    - predominantly_gibberish_or_token_corruption
+    - catastrophic_unreadability
+    - no_interpretable_communicative_content
+  not_automatically_invalid:
+    - starts_or_ends_mid_document
+    - continuation_fragment_with_locally_coherent_content
+    - unconventional_but_plausible_web_genre
+
+meaningful_diversity:
+  assignment: one_hard_primary_mode_per_valid_sample
+  hybrid_handling: dominant_mode_plus_hybrid_flag
+  invalid_mode: null
+  distinct_mode_bases:
+    - substantive_topic_or_content
+    - genre_or_communicative_purpose
+    - narrative_setup
+    - argument_or_perspective
+    - discourse_structure
+  same_mode_examples:
+    - paraphrases_of_one_idea
+    - named_entity_substitution_in_same_template
+    - formatting_only_changes
+    - same_story_or_article_skeleton
+  formula: >-
+    Let n be group size, V the number of valid samples, n_k mode counts among valid
+    samples, p_k=n_k/V, and H=-sum_k p_k ln p_k. GED_g=10*(V/n)*H/ln(n).
+    Define GED_g=0 when V<2 or fewer than two modes are represented.
+  effective_mode_count: "K_eff = exp(H)"
+  invalid_penalty: linear_valid_fraction
+  quality_gate_scope: catastrophic_invalidity_only
+  quality_gate_caveat: >-
+    A weak, repetitive, or partly incoherent sample that remains valid contributes
+    full mode mass. GED is therefore not continuously quality-weighted.
+  saturation_caveat: >-
+    On heterogeneous web text, a group in which every valid sample is assigned a
+    distinct local mode reaches the ceiling even though corpus-wide support is unknown.
+  mode_confidence_in_formula: false
+  pairwise_distance_in_formula: false
+  required_diagnostics:
+    - valid_count
+    - represented_mode_count
+    - effective_mode_count
+    - dominant_mode_share
+    - all_singleton_group_rate
+    - ged_ceiling_rate
+    - clustering_confidence
+    - hybrid_rate
+
+anchors:
+  visible_in_scoring_prompts: false
+  use: separate_calibration_batches
+  normalize_scores_to_anchors: false
+  recommended_families:
+    - held_out_domain_matched_human_text
+    - gpt2_unconditional_generation
+    - controlled_repetition
+    - sentence_shuffle
+    - unrelated_text_splice
+    - token_corruption
+    - exact_duplicate_collapse
+    - same_template_collapse
+
+statistics:
+  bootstrap:
+    method: crossed_bayesian_bootstrap
+    replicates: 10000
+    confidence_level: 0.95
+    seed: 20260724
+    geq_unit: sample_index
+    ged_units:
+      - sample_index
+      - random_partition
+    recompute_ged_with_weights: true
+    default_pairing_mode: partitions
+    pairing_modes:
+      none: independent sample and partition weights by method
+      partitions: shared partition weights, independent sample weights
+      samples-and-partitions: shared weights only for declared common-random-number outputs
+  paired_comparisons:
+    sample_pairing_requires_common_random_numbers: true
+    aligned_integer_indices_alone_are_not_pairing: true
+  reporting:
+    - two_sided_95_percent_ci_for_scores
+    - one_sided_95_percent_lower_bound_for_directional_claims
+  quality_superiority: "LCB_0.95(Delta GEQ) > 0"
+  diversity_noninferiority: "LCB_0.95(Delta GED) > -delta_D"
+  diversity_sufficiency: "LCB_0.95(GED) >= theta_D"
+  threshold_policy: >-
+    theta_D and delta_D must be predeclared and calibrated against human perceptual
+    judgments. GED=5 and delta_D=0.5 may appear only as labeled sensitivity analyses
+    until such calibration exists.
+
+validation_status:
+  human_calibration_completed: false
+  minimum_validation_completed: false
+  ged_sufficiency_threshold_calibrated: false
+  ged_noninferiority_margin_calibrated: false
+  paper_pilot_interpretation: exploratory_only
+
+retry_policy:
+  transport_or_provider_failure_retries: 2
+  malformed_json_or_schema_failure_retries: 2
+  semantic_cross_field_failure_retries: 1
+  retry_prompt: >-
+    Return a complete replacement object that follows the supplied schema. Do not
+    explain the error and do not preserve the malformed object.
+  manual_repair_of_judge_content: prohibited
+
+required_run_metadata:
+  - protocol_version
+  - target_profile_id
+  - judge_provider
+  - judge_model_snapshot
+  - prompt_sha256
+  - schema_sha256
+  - target_profile_sha256
+  - sample_count
+  - group_size
+  - partition_count
+  - generation_seeds
+  - grouping_seeds
+  - sample_hashes
+  - API_response_ids
+  - judge_usage_tokens
+  - retry_counts
+  - timestamp_utc
+  - code_commit_or_archive_hash

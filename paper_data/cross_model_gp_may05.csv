@@ -1,0 +1,89 @@
+model,setting,steps,gen_ppl,entropy,total_samples,sampler,temperature,precision,use_float64,source,evaluator
+Autoregressive,autoregressive,1,31.346033096313477,5.499001502990723,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/ar_default_fp64_s1024.json (replicated flat AR baseline),gpt2-large
+Autoregressive,autoregressive,2,31.346033096313477,5.499001502990723,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/ar_default_fp64_s1024.json (replicated flat AR baseline),gpt2-large
+Autoregressive,autoregressive,4,31.346033096313477,5.499001502990723,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/ar_default_fp64_s1024.json (replicated flat AR baseline),gpt2-large
+Autoregressive,autoregressive,8,31.346033096313477,5.499001502990723,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/ar_default_fp64_s1024.json (replicated flat AR baseline),gpt2-large
+Autoregressive,autoregressive,16,31.346033096313477,5.499001502990723,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/ar_default_fp64_s1024.json (replicated flat AR baseline),gpt2-large
+Autoregressive,autoregressive,32,31.346033096313477,5.499001502990723,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/ar_default_fp64_s1024.json (replicated flat AR baseline),gpt2-large
+Autoregressive,autoregressive,64,31.346033096313477,5.499001502990723,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/ar_default_fp64_s1024.json (replicated flat AR baseline),gpt2-large
+Autoregressive,autoregressive,128,31.346033096313477,5.499001502990723,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/ar_default_fp64_s1024.json (replicated flat AR baseline),gpt2-large
+Autoregressive,autoregressive,256,31.346033096313477,5.499001502990723,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/ar_default_fp64_s1024.json (replicated flat AR baseline),gpt2-large
+Autoregressive,autoregressive,512,31.346033096313477,5.499001502990723,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/ar_default_fp64_s1024.json (replicated flat AR baseline),gpt2-large
+Autoregressive,autoregressive,1024,31.346033096313477,5.499001502990723,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/ar_default_fp64_s1024.json (replicated flat AR baseline),gpt2-large
+DUO,default,1,3819.741943359375,5.788322925567627,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_default_tau1_fp64_s1.json,gpt2-large
+DUO,default,2,1562.9630126953125,5.625948429107666,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_default_tau1_fp64_s2.json,gpt2-large
+DUO,default,4,518.2919921875,5.549717903137207,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_default_tau1_fp64_s4.json,gpt2-large
+DUO,default,8,195.28579711914062,5.553138256072998,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_default_tau1_fp64_s8.json,gpt2-large
+DUO,default,16,126.21441650390625,5.588852405548096,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_default_tau1_fp64_s16.json,gpt2-large
+DUO,default,32,90.89998626708984,5.5709381103515625,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_default_tau1_fp64_s32.json,gpt2-large
+DUO,default,64,86.20350646972656,5.598364353179932,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_default_tau1_fp64_s64.json,gpt2-large
+DUO,default,128,86.22722625732422,5.5703935623168945,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_default_tau1_fp64_s128.json,gpt2-large
+DUO,default,256,70.134033203125,5.538031578063965,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_default_tau1_fp64_s256.json,gpt2-large
+DUO,default,512,80.69795227050781,5.504025936126709,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_default_tau1_fp64_s512.json,gpt2-large
+DUO,default,1024,85.58329010009766,5.566525459289551,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_default_tau1_fp64_s1024.json,gpt2-large
+DUO-Distilled,default,1,6042.04150390625,5.963284969329834,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_distilled_default_tau1_fp64_s1.json,gpt2-large
+DUO-Distilled,default,2,1190.5322265625,5.590111255645752,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_distilled_default_tau1_fp64_s2.json,gpt2-large
+DUO-Distilled,default,4,314.931640625,5.50999641418457,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_distilled_default_tau1_fp64_s4.json,gpt2-large
+DUO-Distilled,default,8,135.96875,5.555059909820557,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_distilled_default_tau1_fp64_s8.json,gpt2-large
+DUO-Distilled,default,16,83.12937927246094,5.547202110290527,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_distilled_default_tau1_fp64_s16.json,gpt2-large
+DUO-Distilled,default,32,67.71671295166016,5.54532527923584,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_distilled_default_tau1_fp64_s32.json,gpt2-large
+DUO-Distilled,default,64,65.95706176757812,5.515876770019531,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_distilled_default_tau1_fp64_s64.json,gpt2-large
+DUO-Distilled,default,128,61.97067642211914,5.5002336502075195,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_distilled_default_tau1_fp64_s128.json,gpt2-large
+DUO-Distilled,default,256,51.160587310791016,5.45654296875,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_distilled_default_tau1_fp64_s256.json,gpt2-large
+DUO-Distilled,default,512,63.861202239990234,5.465832233428955,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_distilled_default_tau1_fp64_s512.json,gpt2-large
+DUO-Distilled,default,1024,65.7410659790039,5.467069149017334,40,ancestral,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/duo_distilled_default_tau1_fp64_s1024.json,gpt2-large
+DiDi-Instruct,default,1,3473.615478515625,5.732703685760498,40,guided,1.0,fp64,true,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t1p0_fp64_s1.json,gpt2-large
+DiDi-Instruct,default,2,2550.203125,5.808636665344238,40,guided,1.0,fp64,true,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t1p0_fp64_s2.json,gpt2-large
+DiDi-Instruct,default,4,523.5781860351562,5.563353061676025,40,guided,1.0,fp64,true,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t1p0_fp64_s4.json,gpt2-large
+DiDi-Instruct,default,8,147.8928680419922,5.4500932693481445,40,guided,1.0,fp64,true,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t1p0_fp64_s8.json,gpt2-large
+DiDi-Instruct,default,16,71.55656433105469,5.430166721343994,40,guided,1.0,fp64,true,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t1p0_fp64_s16.json,gpt2-large
+DiDi-Instruct,default,32,46.75520706176758,5.386190414428711,40,guided,1.0,fp64,true,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t1p0_fp64_s32.json,gpt2-large
+DiDi-Instruct,default,64,37.28147888183594,5.370088577270508,40,guided,1.0,fp64,true,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t1p0_fp64_s64.json,gpt2-large
+DiDi-Instruct,default,128,34.506431579589844,5.352591514587402,40,guided,1.0,fp64,true,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t1p0_fp64_s128.json,gpt2-large
+DiDi-Instruct,default,256,30.932842254638672,5.333018779754639,40,guided,1.0,fp64,true,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t1p0_fp64_s256.json,gpt2-large
+DiDi-Instruct,default,512,30.822246551513672,5.327950477600098,40,guided,1.0,fp64,true,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t1p0_fp64_s512.json,gpt2-large
+DiDi-Instruct,default,1024,30.05565643310547,5.307525634765625,40,guided,1.0,fp64,true,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t1p0_fp64_s1024.json,gpt2-large
+DiDi-Instruct calibrated,calibrated,1,1373.9842529296875,5.1960859298706055,40,guided,0.9,fp32,false,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t0p9_fp32_s1.json,gpt2-large
+DiDi-Instruct calibrated,calibrated,2,876.46728515625,5.157047748565674,40,guided,0.9,fp32,false,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t0p9_fp32_s2.json,gpt2-large
+DiDi-Instruct calibrated,calibrated,4,220.06297302246094,5.117529392242432,40,guided,0.9,fp32,false,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t0p9_fp32_s4.json,gpt2-large
+DiDi-Instruct calibrated,calibrated,8,76.0924301147461,5.144287109375,40,guided,0.9,fp32,false,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t0p9_fp32_s8.json,gpt2-large
+DiDi-Instruct calibrated,calibrated,16,40.66252899169922,5.173752784729004,40,guided,0.9,fp32,false,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t0p9_fp32_s16.json,gpt2-large
+DiDi-Instruct calibrated,calibrated,32,26.731691360473633,5.130092144012451,40,guided,0.9,fp32,false,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t0p9_fp32_s32.json,gpt2-large
+DiDi-Instruct calibrated,calibrated,64,20.74135398864746,5.067018985748291,40,guided,0.9,fp32,false,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t0p9_fp32_s64.json,gpt2-large
+DiDi-Instruct calibrated,calibrated,128,18.910350799560547,5.050278663635254,40,guided,0.9,fp32,false,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t0p9_fp32_s128.json,gpt2-large
+DiDi-Instruct calibrated,calibrated,256,17.0389461517334,5.031113624572754,40,guided,0.9,fp32,false,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t0p9_fp32_s256.json,gpt2-large
+DiDi-Instruct calibrated,calibrated,512,15.8796968460083,4.968284606933594,40,guided,0.9,fp32,false,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t0p9_fp32_s512.json,gpt2-large
+DiDi-Instruct calibrated,calibrated,1024,15.075967788696289,4.948769569396973,40,guided,0.9,fp32,false,${OUTPUT_ROOT}/dlm_asym/runs/didi_full_grid_may01/guided_current_ema_t0p9_fp32_s1024.json,gpt2-large
+MDLM,default,1,4332.146484375,5.834012031555176,40,ancestral_cache,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_default_tau1_fp64_s1.json,gpt2-large
+MDLM,default,2,3454.158203125,5.935659408569336,40,ancestral_cache,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_default_tau1_fp64_s2.json,gpt2-large
+MDLM,default,4,1948.8134765625,5.950348854064941,40,ancestral_cache,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_default_tau1_fp64_s4.json,gpt2-large
+MDLM,default,8,899.3347778320312,5.877598285675049,40,ancestral_cache,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_default_tau1_fp64_s8.json,gpt2-large
+MDLM,default,16,344.1566467285156,5.787546634674072,40,ancestral_cache,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_default_tau1_fp64_s16.json,gpt2-large
+MDLM,default,32,215.43797302246094,5.735983848571777,40,ancestral_cache,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_default_tau1_fp64_s32.json,gpt2-large
+MDLM,default,64,145.38784790039062,5.706974029541016,40,ancestral_cache,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_default_tau1_fp64_s64.json,gpt2-large
+MDLM,default,128,117.66239166259766,5.662980079650879,40,ancestral_cache,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_default_tau1_fp64_s128.json,gpt2-large
+MDLM,default,256,109.89892578125,5.644200325012207,40,ancestral_cache,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_default_tau1_fp64_s256.json,gpt2-large
+MDLM,default,512,99.91058349609375,5.639298915863037,40,ancestral_cache,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_default_tau1_fp64_s512.json,gpt2-large
+MDLM,default,1024,103.75968170166016,5.636950492858887,40,ancestral_cache,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_default_tau1_fp64_s1024.json,gpt2-large
+MDLM calibrated,calibrated,1,1585.0958251953125,5.235548973083496,40,ancestral_cache,0.9,float32,False,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_calibrated_tau0p9_fp32_s1.json,gpt2-large
+MDLM calibrated,calibrated,2,1079.2783203125,5.289992809295654,40,ancestral_cache,0.9,float32,False,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_calibrated_tau0p9_fp32_s2.json,gpt2-large
+MDLM calibrated,calibrated,4,519.4310913085938,5.287627220153809,40,ancestral_cache,0.9,float32,False,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_calibrated_tau0p9_fp32_s4.json,gpt2-large
+MDLM calibrated,calibrated,8,218.60733032226562,5.323142051696777,40,ancestral_cache,0.9,float32,False,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_calibrated_tau0p9_fp32_s8.json,gpt2-large
+MDLM calibrated,calibrated,16,103.61832427978516,5.356069087982178,40,ancestral_cache,0.9,float32,False,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_calibrated_tau0p9_fp32_s16.json,gpt2-large
+MDLM calibrated,calibrated,32,54.756980895996094,5.319382667541504,40,ancestral_cache,0.9,float32,False,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_calibrated_tau0p9_fp32_s32.json,gpt2-large
+MDLM calibrated,calibrated,64,44.5380973815918,5.302527904510498,40,ancestral_cache,0.9,float32,False,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_calibrated_tau0p9_fp32_s64.json,gpt2-large
+MDLM calibrated,calibrated,128,33.32095718383789,5.22650146484375,40,ancestral_cache,0.9,float32,False,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_calibrated_tau0p9_fp32_s128.json,gpt2-large
+MDLM calibrated,calibrated,256,30.131942749023438,5.148928165435791,40,ancestral_cache,0.9,float32,False,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_calibrated_tau0p9_fp32_s256.json,gpt2-large
+MDLM calibrated,calibrated,512,26.98274803161621,5.0712809562683105,40,ancestral_cache,0.9,float32,False,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_calibrated_tau0p9_fp32_s512.json,gpt2-large
+MDLM calibrated,calibrated,1024,21.4289493560791,4.982621192932129,40,ancestral_cache,0.9,float32,False,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/mdlm_calibrated_tau0p9_fp32_s1024.json,gpt2-large
+SEDD,default,1,3754.00830078125,5.78893518447876,40,analytic,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/sedd_default_tau1_fp64_s1.json,gpt2-large
+SEDD,default,2,3009.65185546875,5.889537811279297,40,analytic,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/sedd_default_tau1_fp64_s2.json,gpt2-large
+SEDD,default,4,1863.319091796875,5.909560203552246,40,analytic,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/sedd_default_tau1_fp64_s4.json,gpt2-large
+SEDD,default,8,700.518798828125,5.839405536651611,40,analytic,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/sedd_default_tau1_fp64_s8.json,gpt2-large
+SEDD,default,16,385.69049072265625,5.806164741516113,40,analytic,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/sedd_default_tau1_fp64_s16.json,gpt2-large
+SEDD,default,32,187.99188232421875,5.708118438720703,40,analytic,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/sedd_default_tau1_fp64_s32.json,gpt2-large
+SEDD,default,64,146.5321807861328,5.690662384033203,40,analytic,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/sedd_default_tau1_fp64_s64.json,gpt2-large
+SEDD,default,128,131.9032440185547,5.6639323234558105,40,analytic,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/sedd_default_tau1_fp64_s128.json,gpt2-large
+SEDD,default,256,100.06449127197266,5.624439239501953,40,analytic,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/sedd_default_tau1_fp64_s256.json,gpt2-large
+SEDD,default,512,109.13623046875,5.6337971687316895,40,analytic,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/sedd_default_tau1_fp64_s512.json,gpt2-large
+SEDD,default,1024,114.02680969238281,5.649900913238525,40,analytic,1.0,float64,True,${OUTPUT_ROOT}/dlm_asym/runs/cross_model_may05/json/sedd_default_tau1_fp64_s1024.json,gpt2-large

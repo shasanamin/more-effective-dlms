@@ -1,0 +1,16 @@
+name: mdlm
+backbone: dit  # dit / dimamba / hf_dit
+parameterization: subs
+time_conditioning: False
+T: 0  # 0 (continuous time) / 1000 
+discrete_loss_exact_mask_norm: True
+subs_masking: False
+causal_attention: False
+ignore_bos: False
+loss_type: elbo
+off_trajectory_reg:
+  enabled: False
+  weight: 0.0
+  delta_t: 0.015625
+  time_points: [0.35, 0.55]
+  num_time_points_per_batch: 1

@@ -1,0 +1,7 @@
+paper_label,artifact_rows,checkpoint_filename,checkpoint_sha256,upstream_id,evaluator_id,evaluator_revision,generation_seed,samples_per_point,sequence_length,notes
+MDLM-Small,MDLM|MDLM calibrated,mdlm.ckpt,74bf9b853206e73b4811d8127e836c2cdcfb7a23f8e04ad7d1356a58f1138d27,public MDLM-Small release,gpt2-large,32b71b12589c2f8d625668d2335a01cac3249519,1,40,1024,Operating-point rows share this checkpoint
+DUO,DUO,duo.ckpt,ea8edb134515121c8d998b43c08517a53b1d6797aed9d80117f7322d10316c4c,official DUO release,gpt2-large,32b71b12589c2f8d625668d2335a01cac3249519,1,40,1024,
+DUO-DCD,DUO-Distilled,duo-distilled.ckpt,23dba8a6cc97500f3798cb35484c8219a6c8a611b38f9dc92e2ae23946f593a9,official distilled DUO release,gpt2-large,32b71b12589c2f8d625668d2335a01cac3249519,1,40,1024,Artifact name DUO-Distilled maps to paper name DUO-DCD
+SEDD,SEDD,sedd.ckpt,11ec99693f1f073b3e8df88db6d2f32705e72a7c08b33c5f2f54c8dc696693b1,official SEDD release,gpt2-large,32b71b12589c2f8d625668d2335a01cac3249519,1,40,1024,
+DiDi-Instruct,DiDi-Instruct|DiDi-Instruct calibrated,didi-instruct.sanitized.ckpt,e7f41f80b3a1700dcc46f6920a0bec616a55753e216cf6c3bc8985335b51dd82,haoyangzheng/didi-instruct-small,gpt2-large,32b71b12589c2f8d625668d2335a01cac3249519,1,40,1024,EMA student; operating-point rows share this checkpoint
+GPT-2 generator,Autoregressive,ar.ckpt,74223bba9896ddc3ad08c52a503de0d40f1fd80b90502fb71e474a07b96ac8d2,gpt2,gpt2-large,32b71b12589c2f8d625668d2335a01cac3249519,1,40,1024,Update-independent generator reference

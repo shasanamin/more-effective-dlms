@@ -1,0 +1,260 @@
+{
+  "analysis": {
+    "association_orientation": "mean GEQ(pass) minus mean GEQ(fail)",
+    "auroc_chance_value": 0.5,
+    "auroc_positive_class": "deterministic pass",
+    "bootstrap_method": "ordinary_condition_cluster_bootstrap",
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20260731,
+    "bootstrap_unit": "task condition",
+    "confidence_interval": "two-sided percentile 95%",
+    "geq_dimensions": [
+      "readability",
+      "reasoning_coherence",
+      "task_success",
+      "nondegeneration_structure"
+    ],
+    "geq_range": [
+      0.0,
+      10.0
+    ],
+    "paired_model_difference_orientation": "Dream minus LLaDA"
+  },
+  "design": {
+    "ged_defined_or_reported": false,
+    "groups": 420,
+    "judge_input_blinded_to_model": true,
+    "judge_input_includes_hidden_reference_answers": false,
+    "judge_input_includes_humaneval_tests_or_canonical_solutions": false,
+    "models": [
+      "llada",
+      "dream"
+    ],
+    "responses": 840,
+    "tasks": [
+      "gsm8k",
+      "humaneval"
+    ]
+  },
+  "evaluation_protocol": "conditional-large-dlm-geq-v1",
+  "interpretation_limits": [
+    "GEQ is task-conditional here and is not directly comparable to unconditional GroupEval pilots.",
+    "AUROC and pass/fail association are construct-validity diagnostics, not human validation.",
+    "The judge did not receive hidden answers, HumanEval tests, or canonical solutions and did not execute code.",
+    "GSM8K exact-match and HumanEval functional success establish different task-specific orderings in these frozen runs.",
+    "One response per model per condition does not identify within-model diversity, so GED is undefined and unreported."
+  ],
+  "judge": {
+    "judge_endpoint": "https://genai.example.org/api/chat/completions",
+    "judge_model_snapshot": "gpt-oss:120b",
+    "judge_provider": "institutional_genai",
+    "local_validation_uses_unmodified_schema": true,
+    "model_identifier_is_provider_alias": true,
+    "prompt_sha256": "f59864ff89814eb4793cad048aa86aaf69c5880b3993746b0caa8f296d2d08ba",
+    "provider_response_model": "gpt-oss:120b",
+    "provider_schema_normalizations": [],
+    "provider_schema_omitted_keywords": [
+      "uniqueItems"
+    ],
+    "reasoning_effort": "provider_default",
+    "schema_sha256": "b0da6798039dc4e94ea1a94c59843b6a9e3070ff665eb029abdc581fae453b25",
+    "strict_json_schema": true,
+    "system_fingerprint": "vllm-0.25.1-f1656415",
+    "target_profile_sha256": "036870d66642b4f49818af72782126615365ce4bceee00cb876837a86aaa0280",
+    "tools_enabled": false
+  },
+  "protocol_version": "1.0.0-conditional-large-dlm",
+  "source_sha256": {
+    "generation_provenance": "e3c8d1cfbf7f7c7992cd5c4c887acd3b6512b302ff85a3c8c8c096715774e711",
+    "groups": "7f48595fec5b182f489ba6d37f47edf2a0d7bdbd353ac6bc2082c3317dfca3e9",
+    "input_schema": "969131ed830c5b4fa8248810d5ebaad835e9890f002ecb89dfe6c2c3c14779dd",
+    "judgments": "abcf6c2205801d8410a59991f0081c0a90f90ed7e918d1ad318ca5ac6680b5c7",
+    "output_schema": "b0da6798039dc4e94ea1a94c59843b6a9e3070ff665eb029abdc581fae453b25",
+    "preparation_summary": "624b9c01a5a52804843c1ba41b5d212c9d764798774dc3e5117a7ae9786e58ca",
+    "prepared_bundle_sha256sums": "fd96bae49dabe6f0ec646ad503c39c0e73bb827ef8a9ac67e264d7bdde9909be",
+    "private_label_map": "140fdf57a5f8ba85a307c95599a4948a7f26ff4d3f2aa40ce53dd251bcce973a",
+    "prompt": "f59864ff89814eb4793cad048aa86aaf69c5880b3993746b0caa8f296d2d08ba",
+    "target_profile": "036870d66642b4f49818af72782126615365ce4bceee00cb876837a86aaa0280"
+  },
+  "target_profile_id": "large-dlm-tasks-v1",
+  "tasks": {
+    "gsm8k": {
+      "construct_validity": {
+        "dream": {
+          "association_ci_high": 3.787281635111094,
+          "association_ci_low": 3.014784766484559,
+          "auroc": 0.9610165309647175,
+          "auroc_ci_high": 0.9870649304497918,
+          "auroc_ci_low": 0.9276854198515265,
+          "deterministic_failed": 63,
+          "deterministic_passed": 193,
+          "mean_geq_pass_minus_fail": 3.396558105107328,
+          "responses": 256,
+          "scope": "dream",
+          "task_name": "gsm8k"
+        },
+        "llada": {
+          "association_ci_high": 2.7594339622641506,
+          "association_ci_low": 1.8796835052455254,
+          "auroc": 0.8556640047323277,
+          "auroc_ci_high": 0.9170424015278932,
+          "auroc_ci_low": 0.7888888888888889,
+          "deterministic_failed": 49,
+          "deterministic_passed": 207,
+          "mean_geq_pass_minus_fail": 2.3348614808242134,
+          "responses": 256,
+          "scope": "llada",
+          "task_name": "gsm8k"
+        },
+        "pooled": {
+          "association_ci_high": 3.277388274375867,
+          "association_ci_low": 2.5969991160629906,
+          "auroc": 0.9148995535714286,
+          "auroc_ci_high": 0.950976116303219,
+          "auroc_ci_low": 0.8742299073355513,
+          "deterministic_failed": 112,
+          "deterministic_passed": 400,
+          "mean_geq_pass_minus_fail": 2.9450892857142863,
+          "responses": 512,
+          "scope": "pooled",
+          "task_name": "gsm8k"
+        }
+      },
+      "discordant_pass_vs_fail": {
+        "ci_high": 3.5267857142857144,
+        "ci_low": 2.544642857142857,
+        "discordant_conditions": 56,
+        "fraction_ci_high": 0.9107142857142857,
+        "fraction_ci_low": 0.6964285714285714,
+        "fraction_pass_geq_greater_than_fail": 0.8035714285714286,
+        "fraction_pass_geq_lower_than_fail": 0.017857142857142856,
+        "fraction_tied": 0.17857142857142858,
+        "mean_geq_pass_minus_fail": 3.0357142857142856,
+        "task_name": "gsm8k"
+      },
+      "models": {
+        "dream": {
+          "conditions": 256,
+          "deterministic_accuracy": 0.75390625,
+          "deterministic_passed": 193,
+          "geq_ci_high": 9.19921875,
+          "geq_ci_low": 8.7744140625,
+          "geq_mean": 8.9892578125,
+          "model_code": "dream",
+          "model_name": "Dream-v0-Base-7B",
+          "task_name": "gsm8k"
+        },
+        "llada": {
+          "conditions": 256,
+          "deterministic_accuracy": 0.80859375,
+          "deterministic_passed": 207,
+          "geq_ci_high": 9.677734375,
+          "geq_ci_low": 9.3896484375,
+          "geq_mean": 9.541015625,
+          "model_code": "llada",
+          "model_name": "LLaDA-8B-Instruct",
+          "task_name": "gsm8k"
+        }
+      },
+      "paired_model_comparison": {
+        "ci_high": -0.3369140625,
+        "ci_low": -0.7666015625,
+        "conditions": 256,
+        "difference_orientation": "dream_minus_llada",
+        "dream_minus_llada_deterministic_accuracy": -0.0546875,
+        "dream_minus_llada_geq": -0.5517578125,
+        "geq_and_deterministic_differences_same_direction": true,
+        "task_name": "gsm8k"
+      }
+    },
+    "humaneval": {
+      "construct_validity": {
+        "dream": {
+          "association_ci_high": 3.8181211748022097,
+          "association_ci_low": 2.7117666815942685,
+          "auroc": 0.948139880952381,
+          "auroc_ci_high": 0.9782608695652174,
+          "auroc_ci_low": 0.9125,
+          "deterministic_failed": 80,
+          "deterministic_passed": 84,
+          "mean_geq_pass_minus_fail": 3.2507440476190474,
+          "responses": 164,
+          "scope": "dream",
+          "task_name": "humaneval"
+        },
+        "llada": {
+          "association_ci_high": 3.1186075746373696,
+          "association_ci_low": 2.4999905346054825,
+          "auroc": 0.9649041434755721,
+          "auroc_ci_high": 0.9861937837567127,
+          "auroc_ci_low": 0.9378389260842677,
+          "deterministic_failed": 98,
+          "deterministic_passed": 66,
+          "mean_geq_pass_minus_fail": 2.808055040197897,
+          "responses": 164,
+          "scope": "llada",
+          "task_name": "humaneval"
+        },
+        "pooled": {
+          "association_ci_high": 3.334374029894286,
+          "association_ci_low": 2.7230214856443546,
+          "auroc": 0.9585580524344569,
+          "auroc_ci_high": 0.9778702739850026,
+          "auroc_ci_low": 0.9360922751892055,
+          "deterministic_failed": 178,
+          "deterministic_passed": 150,
+          "mean_geq_pass_minus_fail": 3.0263108614232213,
+          "responses": 328,
+          "scope": "pooled",
+          "task_name": "humaneval"
+        }
+      },
+      "discordant_pass_vs_fail": {
+        "ci_high": 3.6607142857142856,
+        "ci_low": 2.5297619047619047,
+        "discordant_conditions": 42,
+        "fraction_ci_high": 1.0,
+        "fraction_ci_low": 0.8809523809523809,
+        "fraction_pass_geq_greater_than_fail": 0.9523809523809523,
+        "fraction_pass_geq_lower_than_fail": 0.0,
+        "fraction_tied": 0.047619047619047616,
+        "mean_geq_pass_minus_fail": 3.0654761904761907,
+        "task_name": "humaneval"
+      },
+      "models": {
+        "dream": {
+          "conditions": 164,
+          "deterministic_accuracy": 0.5121951219512195,
+          "deterministic_passed": 84,
+          "geq_ci_high": 8.75,
+          "geq_ci_low": 8.018292682926829,
+          "geq_mean": 8.399390243902438,
+          "model_code": "dream",
+          "model_name": "Dream-v0-Base-7B",
+          "task_name": "humaneval"
+        },
+        "llada": {
+          "conditions": 164,
+          "deterministic_accuracy": 0.4024390243902439,
+          "deterministic_passed": 66,
+          "geq_ci_high": 8.399390243902438,
+          "geq_ci_low": 7.850609756097561,
+          "geq_mean": 8.132621951219512,
+          "model_code": "llada",
+          "model_name": "LLaDA-8B-Instruct",
+          "task_name": "humaneval"
+        }
+      },
+      "paired_model_comparison": {
+        "ci_high": 0.6478658536585366,
+        "ci_low": -0.12957317073170732,
+        "conditions": 164,
+        "difference_orientation": "dream_minus_llada",
+        "dream_minus_llada_deterministic_accuracy": 0.1097560975609756,
+        "dream_minus_llada_geq": 0.26676829268292684,
+        "geq_and_deterministic_differences_same_direction": true,
+        "task_name": "humaneval"
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+# MDLM/DUO/SEDD research environment (Linux + CUDA, separate from CPU tools).
+# Resolve the matching Triton through PyTorch; do not pin an incompatible version.
+-r requirements-research.txt
+numpy<2
+scipy>=1.10
+huggingface-hub
+# Optional acceleration, installed after PyTorch for the matching CUDA toolchain:
+# flash-attn

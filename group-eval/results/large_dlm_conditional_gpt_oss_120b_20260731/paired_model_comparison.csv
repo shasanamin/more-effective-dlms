@@ -1,0 +1,3 @@
+task_name,conditions,difference_orientation,dream_minus_llada_geq,ci_low,ci_high,dream_minus_llada_deterministic_accuracy,geq_and_deterministic_differences_same_direction
+gsm8k,256,dream_minus_llada,-0.5517578125,-0.7666015625,-0.3369140625,-0.0546875,True
+humaneval,164,dream_minus_llada,0.26676829268292684,-0.12957317073170732,0.6478658536585366,0.1097560975609756,True

@@ -1,0 +1,10 @@
+{
+  "temperature_contrast": 0.9,
+  "temperature_reference": 1.0,
+  "paired_profile_left32_late_minus_early": -0.674364750739187,
+  "paired_profile_left32_ci95": [
+    -0.7219211933581391,
+    -0.6287372005928774
+  ],
+  "interpretation": "Positive temperature contrasts mean the sharpened temperature increases the teacher-forced certificate. Negative checkpoint contrasts mean the late checkpoint has lower certificate cross-entropy."
+}

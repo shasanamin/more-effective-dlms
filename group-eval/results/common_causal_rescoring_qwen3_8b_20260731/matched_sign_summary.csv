@@ -1,0 +1,13 @@
+series_id,evaluator,span_policy,metric,subset,matched_pair_count,mdlm_lower_count,mdlm_higher_count,tie_count
+gpt2_large_full_stream,GPT-2-Large,full_stream_segmented,token_micro_perplexity,primary_M_ge_16,8,0,8,0
+gpt2_large_full_stream,GPT-2-Large,full_stream_segmented,output_macro_geometric_perplexity,primary_M_ge_16,8,0,8,0
+gpt2_large_full_stream,GPT-2-Large,full_stream_segmented,corpus_bits_per_utf8_byte,primary_M_ge_16,8,0,8,0
+gpt2_large_first_document,GPT-2-Large,first_document,token_micro_perplexity,primary_M_ge_16,8,0,8,0
+gpt2_large_first_document,GPT-2-Large,first_document,output_macro_geometric_perplexity,primary_M_ge_16,8,0,8,0
+gpt2_large_first_document,GPT-2-Large,first_document,corpus_bits_per_utf8_byte,primary_M_ge_16,8,0,8,0
+qwen3_8b_full_stream,Qwen3-8B-Base,full_stream_segmented,token_micro_perplexity,primary_M_ge_16,8,0,8,0
+qwen3_8b_full_stream,Qwen3-8B-Base,full_stream_segmented,output_macro_geometric_perplexity,primary_M_ge_16,8,0,8,0
+qwen3_8b_full_stream,Qwen3-8B-Base,full_stream_segmented,corpus_bits_per_utf8_byte,primary_M_ge_16,8,0,8,0
+qwen3_8b_first_document,Qwen3-8B-Base,first_document,token_micro_perplexity,primary_M_ge_16,8,0,8,0
+qwen3_8b_first_document,Qwen3-8B-Base,first_document,output_macro_geometric_perplexity,primary_M_ge_16,8,3,5,0
+qwen3_8b_first_document,Qwen3-8B-Base,first_document,corpus_bits_per_utf8_byte,primary_M_ge_16,8,0,8,0

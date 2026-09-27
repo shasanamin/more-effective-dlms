@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/groupeval/absolute_output.schema.json",
+  "title": "GroupEval absolute judge output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol_version",
+    "group_id",
+    "samples",
+    "modes",
+    "group_warnings",
+    "clustering_confidence"
+  ],
+  "properties": {
+    "protocol_version": {
+      "const": "1.0.0"
+    },
+    "group_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "samples": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {
+        "$ref": "#/$defs/sample"
+      }
+    },
+    "modes": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 16,
+      "items": {
+        "$ref": "#/$defs/mode"
+      }
+    },
+    "group_warnings": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 180
+      }
+    },
+    "clustering_confidence": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    }
+  },
+  "$defs": {
+    "score012": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "readability",
+        "coherence",
+        "substance_naturalness",
+        "nondegeneration_structure"
+      ],
+      "properties": {
+        "readability": {
+          "$ref": "#/$defs/score012"
+        },
+        "coherence": {
+          "$ref": "#/$defs/score012"
+        },
+        "substance_naturalness": {
+          "$ref": "#/$defs/score012"
+        },
+        "nondegeneration_structure": {
+          "$ref": "#/$defs/score012"
+        }
+      }
+    },
+    "sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sample_id",
+        "valid",
+        "invalid_reason",
+        "quality",
+        "evidence",
+        "mode_id",
+        "hybrid",
+        "severe_degeneration",
+        "prompt_injection_detected"
+      ],
+      "properties": {
+        "sample_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.:-]{1,80}$"
+        },
+        "valid": {
+          "type": "boolean"
+        },
+        "invalid_reason": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "empty_or_nearly_empty",
+                "predominantly_gibberish_or_token_corruption",
+                "catastrophic_unreadability",
+                "no_interpretable_communicative_content"
+              ]
+            }
+          ]
+        },
+        "quality": {
+          "$ref": "#/$defs/quality"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          }
+        },
+        "mode_id": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^M[1-9][0-9]*$"
+            }
+          ]
+        },
+        "hybrid": {
+          "type": "boolean"
+        },
+        "severe_degeneration": {
+          "type": "boolean"
+        },
+        "prompt_injection_detected": {
+          "type": "boolean"
+        }
+      }
+    },
+    "mode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode_id",
+        "label",
+        "member_sample_ids",
+        "distinguishing_basis"
+      ],
+      "properties": {
+        "mode_id": {
+          "type": "string",
+          "pattern": "^M[1-9][0-9]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "member_sample_ids": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.:-]{1,80}$"
+          }
+        },
+        "distinguishing_basis": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        }
+      }
+    }
+  }
+}

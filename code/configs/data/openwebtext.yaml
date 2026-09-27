@@ -1,0 +1,13 @@
+train: openwebtext
+valid: wikitext103
+tokenizer_name_or_path: gpt2
+cache_dir: ${oc.env:OUTPUT_ROOT,./outputs}/cache
+wrap: True
+streaming: False
+insert_train_eos: True
+insert_valid_eos: True
+train_split: null
+valid_split: null
+train_max_examples: null
+valid_max_examples: null
+preprocessing_num_proc: null

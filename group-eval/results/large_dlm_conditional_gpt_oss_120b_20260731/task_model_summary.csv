@@ -1,0 +1,5 @@
+task_name,model_code,model_name,conditions,deterministic_passed,deterministic_accuracy,geq_mean,geq_ci_low,geq_ci_high
+gsm8k,llada,LLaDA-8B-Instruct,256,207,0.80859375,9.541015625,9.3896484375,9.677734375
+gsm8k,dream,Dream-v0-Base-7B,256,193,0.75390625,8.9892578125,8.7744140625,9.19921875
+humaneval,llada,LLaDA-8B-Instruct,164,66,0.4024390243902439,8.132621951219512,7.850609756097561,8.399390243902438
+humaneval,dream,Dream-v0-Base-7B,164,84,0.5121951219512195,8.399390243902438,8.018292682926829,8.75

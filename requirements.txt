@@ -1,0 +1,4 @@
+# CPU-only figures, theory checks, and GroupEval example. Python >=3.10.
+-r group-eval/requirements.txt
+scipy>=1.10
+matplotlib>=3.7

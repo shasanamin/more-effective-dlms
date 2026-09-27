@@ -1,0 +1,147 @@
+defaults:
+  - _self_
+  - /callbacks: [checkpoint_every_n_steps, checkpoint_monitor, learning_rate_monitor]
+  - /data: openwebtext
+  - /model: small
+  - /strategy: ddp
+  - /noise: log-linear
+  - /lr_scheduler: constant_warmup
+  - /prior: none
+  - /algo: duo_base
+
+mode: train  # train / ppl_eval / sample_eval
+
+seed: 1
+
+loader:
+  global_batch_size: 1024
+  eval_global_batch_size: ${.global_batch_size}
+  # Note: batch_size and eval_batch_size are **per machine**
+  batch_size: ${div_up:${.global_batch_size}, ${eval:${trainer.devices} * ${trainer.num_nodes}}}
+  eval_batch_size: ${div_up:${.eval_global_batch_size}, ${eval:${trainer.devices} * ${trainer.num_nodes}}}
+  num_workers: ${eval:"len(__import__('os').sched_getaffinity(0))"}
+  pin_memory: True
+
+sampling:
+  predictor: ancestral  # ancestral_cache (only for MDLM), ancestral, analytic
+  steps: 1000
+  noise_removal: ancestral  # 'ancestral', 'greedy', 'none'
+  use_float64: True
+  p_nucleus: 1.0
+  num_sample_batches: 2  # Total samples: `num_gpus` * `loader.eval_batch_size` * num_sample_batches
+  num_sample_log: 5
+  semi_ar: False
+  stride_length: 1
+  num_strides: 1
+  early_stopping: False
+  eos_handling: standard  # standard / fill_eos / fill_rand
+  gumbel_precision: 'float32'
+  # Temperature applied to the MDLM x0 distribution before ancestral updates.
+  # 1.0 recovers the original sampler; <1.0 sharpens and >1.0 softens.
+  x0_temperature: 1.0
+  # constant / anneal_to_one / anneal_from_one / power_alpha / cosine_alpha
+  # / budget_aware. The annealing schedules use alpha_t: to_one applies
+  # x0_temperature at high noise and 1.0 near t=0; from_one does the reverse.
+  # power_alpha: tau(t) = tau ** (alpha_t ** p) with p set by
+  # x0_temperature_schedule_power. cosine_alpha: smooth cosine ramp in alpha_t.
+  # budget_aware: sharpens by the per-step revealed-mass fraction
+  # (alpha_t - alpha_s)/(1 - alpha_s), giving a 1/N-aware calibration.
+  x0_temperature_schedule: constant
+  x0_temperature_schedule_power: 1.0
+  # independent recovers the original sampler; confidence_topk reveals the
+  # highest-confidence masked positions at each coarse step.
+  ancestral_reveal_strategy: independent
+  # llada-like params
+  block_length: 128
+  temperature: 0.7  # 0 / 0.7
+  remasking_strategy: low_confidence  # low_confidence / random
+  llada_threshold: -1
+  gen_type: unconditional  # unconditional / conditional / conditional_it
+
+
+
+training:
+  ema: 0.9999
+  antithetic_sampling: True
+  importance_sampling: False
+  sampling_eps: 1e-3
+  change_of_variables: False
+  loss_precision: 'bf16'  # bf16, float32, float64
+  manual_gradient_clip_val: null
+  manual_accumulate_grad_batches: null
+  finetune_path: ''
+
+eval:
+  checkpoint_path: ''  # Used to evaluate a checkpoint after training.
+  disable_ema: False
+  compute_generative_perplexity: False
+  sample_eval_steps: []
+  perplexity_batch_size: 8
+  compute_perplexity_on_sanity: False
+  gen_ppl_eval_model_name_or_path: gpt2-large  # gpt2-large, meta-llama/Llama-2-7b-hf
+  generate_samples: True
+  generated_samples_path: ${cwd:}/samples.json
+  sensitivity:
+    enabled: False
+    num_batches: 1
+    time_points: [0.15, 0.35, 0.55]
+    delta_t: 0.05
+    max_masked_positions: 256
+    pathwise_enabled: True
+    flip_enabled: True
+    flip_fraction: 0.02
+    max_flip_positions: 16
+    log_per_timepoint: False
+
+optim:
+  name: adamw
+  weight_decay: 0
+  lr: 3e-4
+  beta1: 0.9
+  beta2: 0.999
+  eps: 1e-8
+  sam_rho: 0.05
+  sam_adaptive: False
+
+trainer:
+  _target_: lightning.Trainer
+  accelerator: cuda
+  num_nodes: 1
+  devices: ${device_count:}
+  accumulate_grad_batches: ${div_up:${loader.global_batch_size}, ${eval:${trainer.devices} * ${loader.batch_size} * ${trainer.num_nodes}}}
+  gradient_clip_val: 1.0
+  precision: 'bf16'
+  num_sanity_val_steps: 2
+  max_steps: 1_000_000
+  max_epochs: null
+  log_every_n_steps: 1_000
+  limit_train_batches: 1.0   # train on full dataset, can be used to toggle quick run
+  limit_val_batches: 1.0     # validate on full dataset, can be used to toggle quick run
+  val_check_interval: 10_000
+
+wandb:
+  project: DLM
+  notes: Diffusion Language Model
+  group: null
+  job_type: null
+  name: null
+  id: ${.name}_${seed}
+  tags:
+    - ${noise.type}
+    - ${data.train}
+    - ${data.valid}
+    - ${algo.name}
+
+hydra:
+  run:
+    # dir: ./outputs/${data.train}/${now:%Y.%m.%d}/${now:%H%M%S}
+    dir: ${oc.env:OUTPUT_ROOT,./outputs}/runs/${data.train}/${now:%Y.%m.%d}/${now:%H%M%S}
+  job:
+    chdir: true
+
+checkpointing:
+  # Use custom `save_dir` if, e.g., saving to S3 bucket, otherwise leave this parameter as is
+  save_dir: ${cwd:}
+  # Note: `checkpoints` path should correspond to `checkpoint_every_n_steps.dirpath`
+  resume_from_ckpt: true
+  resume_ckpt_path: ${.save_dir}/checkpoints/last.ckpt

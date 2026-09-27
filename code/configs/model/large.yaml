@@ -1,0 +1,11 @@
+name: large
+type: ddit
+hidden_size: 1536
+cond_dim: 256
+length: 1024
+n_blocks: 28
+n_heads: 16
+scale_by_sigma: True
+dropout: 0.1
+tie_word_embeddings: False
+vocab_lookup: True

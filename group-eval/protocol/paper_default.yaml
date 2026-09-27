@@ -1,0 +1,59 @@
+# Paper-default manifest. Documentation only; CLI settings are explicit in README.md.
+profile_id: groupeval-paper-default-v1
+protocol_version: 1.0.0
+task: unconditional_english_web_text
+target_profile_id: owt1024-fullstream-v1
+artifacts:
+  protocol:
+    path: protocol/protocol_v1.yaml
+    sha256: dfa7fd84e51fbb53a56edf0991fe3c5e00590c816cf100c36653a92143ef328a
+  prompt:
+    path: prompts/group_eval_absolute.md
+    sha256: b04ea41495afefbe50dd6cc28d64894dd000871028dc578d3deba6fc9092c34b
+  schema:
+    path: schemas/absolute_output.schema.json
+    sha256: b641072d580f1f8563c171817ba926e03fbd0ae64d17d8db4ee9121e960230b0
+  target_profile:
+    path: protocol/target_profile_owt1024_fullstream.md
+    sha256: ca48bf2c651c89e48805dfcfb4abdd9398952ffa355a5c44afd3921920277fee
+sampling:
+  outputs_per_setting: 128
+  group_size: 8
+  partitions: 2
+  partition_seeds: [271828, 314159]
+  second_partition_candidates: 2000
+  accepted_calls_per_setting: 32
+  filter_outputs: false
+  matched_comparison_outputs_per_setting: 40
+judge:
+  model_alias: "gpt-oss:120b"
+  reported_model_name: gpt-oss-120b
+  serving_software: vLLM
+  provider_adapter: inst
+  recorded_provider_label: institutional_genai
+  tools_enabled: false
+  web_enabled: false
+  response_format: strict_json_schema
+  immutable_weight_revision_available: false
+  recorded_serving_fingerprint: vllm-0.25.1-f1656415
+  decoding: provider_default
+  snapshots_interchangeable: false
+scoring:
+  quality: sample_mean_after_averaging_contexts_including_invalid_zeroes
+  diversity: mean_group_valid_fraction_times_normalized_mode_entropy
+  combine_quality_and_diversity: false
+uncertainty:
+  geq: partition_blocked_bayesian_bootstrap
+  replicates: 10000
+  shared_partition_weights: true
+  shared_sample_weights: false
+  ged: point_estimates_with_diagnostics_only
+  ged_weighted_ranges: sensitivity_not_confidence_intervals
+provenance:
+  preserves_frozen_protocol_bytes: true
+  replaces_historical_reference_judge_instructions_for_new_paper_profile_runs: true
+  retroactively_changes_archived_runs: false
+  cli_note: >-
+    This manifest is not passed to --protocol. The frozen protocol file remains
+    the hash-pinned input to grouping; use the full-stream target profile explicitly
+    when invoking the judge runner.

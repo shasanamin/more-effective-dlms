@@ -1,0 +1,519 @@
+{
+  "analysis": {
+    "budgets_M": [
+      4,
+      16,
+      64,
+      256,
+      1024
+    ],
+    "design_cells": 10,
+    "judge_count": 3,
+    "operating_points": [
+      "reference",
+      "selected"
+    ],
+    "score_handling": "judge-separated; no pooling, averaging, or scale calibration",
+    "sensitivity_statistics": {
+      "interpretation": "These are descriptive sensitivities to judge choice. They do not establish human calibration, test sign-count significance, or make service-alias scales interchangeable.",
+      "pairwise_spearman_across_cells": [
+        {
+          "ged": {
+            "cells": 10,
+            "defined": true,
+            "rank_ties": "average ranks",
+            "reason": null,
+            "rho": 0.47878787878787876
+          },
+          "geq": {
+            "cells": 10,
+            "defined": true,
+            "rank_ties": "average ranks",
+            "reason": null,
+            "rho": 0.9515151515151515
+          },
+          "judge_a": "GPT-OSS",
+          "judge_b": "Gemma"
+        },
+        {
+          "ged": {
+            "cells": 10,
+            "defined": true,
+            "rank_ties": "average ranks",
+            "reason": null,
+            "rho": 0.9030303030303031
+          },
+          "geq": {
+            "cells": 10,
+            "defined": true,
+            "rank_ties": "average ranks",
+            "reason": null,
+            "rho": 0.9272727272727272
+          },
+          "judge_a": "GPT-OSS",
+          "judge_b": "Qwen"
+        },
+        {
+          "ged": {
+            "cells": 10,
+            "defined": true,
+            "rank_ties": "average ranks",
+            "reason": null,
+            "rho": 0.503030303030303
+          },
+          "geq": {
+            "cells": 10,
+            "defined": true,
+            "rank_ties": "average ranks",
+            "reason": null,
+            "rho": 0.9030303030303031
+          },
+          "judge_a": "Gemma",
+          "judge_b": "Qwen"
+        }
+      ],
+      "selected_gt_reference_sign_counts": {
+        "GPT-OSS": {
+          "ged": {
+            "basis": "Point-estimate directions only; ties use absolute tolerance 1e-12. Counts are not significance tests.",
+            "comparisons": 5,
+            "selected_eq_reference_M": [],
+            "selected_eq_reference_count": 0,
+            "selected_gt_reference_M": [
+              4,
+              16,
+              64,
+              256,
+              1024
+            ],
+            "selected_gt_reference_count": 5,
+            "selected_lt_reference_M": [],
+            "selected_lt_reference_count": 0
+          },
+          "geq": {
+            "basis": "Point-estimate directions only; ties use absolute tolerance 1e-12. Counts are not significance tests.",
+            "comparisons": 5,
+            "selected_eq_reference_M": [],
+            "selected_eq_reference_count": 0,
+            "selected_gt_reference_M": [
+              16,
+              64,
+              256,
+              1024
+            ],
+            "selected_gt_reference_count": 4,
+            "selected_lt_reference_M": [
+              4
+            ],
+            "selected_lt_reference_count": 1
+          }
+        },
+        "Gemma": {
+          "ged": {
+            "basis": "Point-estimate directions only; ties use absolute tolerance 1e-12. Counts are not significance tests.",
+            "comparisons": 5,
+            "selected_eq_reference_M": [],
+            "selected_eq_reference_count": 0,
+            "selected_gt_reference_M": [
+              16
+            ],
+            "selected_gt_reference_count": 1,
+            "selected_lt_reference_M": [
+              4,
+              64,
+              256,
+              1024
+            ],
+            "selected_lt_reference_count": 4
+          },
+          "geq": {
+            "basis": "Point-estimate directions only; ties use absolute tolerance 1e-12. Counts are not significance tests.",
+            "comparisons": 5,
+            "selected_eq_reference_M": [],
+            "selected_eq_reference_count": 0,
+            "selected_gt_reference_M": [
+              16,
+              64,
+              256,
+              1024
+            ],
+            "selected_gt_reference_count": 4,
+            "selected_lt_reference_M": [
+              4
+            ],
+            "selected_lt_reference_count": 1
+          }
+        },
+        "Qwen": {
+          "ged": {
+            "basis": "Point-estimate directions only; ties use absolute tolerance 1e-12. Counts are not significance tests.",
+            "comparisons": 5,
+            "selected_eq_reference_M": [],
+            "selected_eq_reference_count": 0,
+            "selected_gt_reference_M": [
+              4,
+              16,
+              64,
+              256,
+              1024
+            ],
+            "selected_gt_reference_count": 5,
+            "selected_lt_reference_M": [],
+            "selected_lt_reference_count": 0
+          },
+          "geq": {
+            "basis": "Point-estimate directions only; ties use absolute tolerance 1e-12. Counts are not significance tests.",
+            "comparisons": 5,
+            "selected_eq_reference_M": [],
+            "selected_eq_reference_count": 0,
+            "selected_gt_reference_M": [
+              4,
+              16,
+              64,
+              256,
+              1024
+            ],
+            "selected_gt_reference_count": 5,
+            "selected_lt_reference_M": [],
+            "selected_lt_reference_count": 0
+          }
+        }
+      }
+    },
+    "source_alignment": "exact"
+  },
+  "artifact": "Reviewer-safe MDLM-Small three-judge GroupEval comparison",
+  "common_judge_protocol_identity": {
+    "local_validation_uses_unmodified_schema": true,
+    "prompt_sha256": "b04ea41495afefbe50dd6cc28d64894dd000871028dc578d3deba6fc9092c34b",
+    "protocol_sha256": "dfa7fd84e51fbb53a56edf0991fe3c5e00590c816cf100c36653a92143ef328a",
+    "protocol_version": "1.0.0",
+    "provider_schema_omitted_keywords": [
+      "uniqueItems"
+    ],
+    "schema_sha256": "b641072d580f1f8563c171817ba926e03fbd0ae64d17d8db4ee9121e960230b0",
+    "strict_json_schema": true,
+    "target_profile_id": "owt1024-fullstream-v1",
+    "target_profile_sha256": "ca48bf2c651c89e48805dfcfb4abdd9398952ffa355a5c44afd3921920277fee",
+    "tools_enabled": false
+  },
+  "common_source_artifacts": {
+    "generation_provenance": {
+      "bytes": 691491,
+      "sha256": "a75080ab0353a09ad9e0e70ae69d0cb8b3a71567c37cdd55f0c23ccf1c14f23c"
+    },
+    "groups": {
+      "bytes": 11995573,
+      "sha256": "1ad35b71556ceb8a36b3f78ba5951adfa5aa83f0159869be84c8e68a28e30f56"
+    },
+    "private_label_map": {
+      "bytes": 5151,
+      "sha256": "b8e1effdeb25f89ed76425fe16cabc60530d1752b81dcd6556a03d30026cea0a"
+    }
+  },
+  "interpretation_notes": [
+    "Every GEQ/GED value remains attached to its named judge alias.",
+    "No cross-judge mean, pooled score, affine alignment, or consensus score is computed.",
+    "Selected-versus-reference sign counts describe point-estimate directions within judge and fixed M; they are not significance tests.",
+    "Pairwise Spearman correlations summarize rank correspondence across ten confounded cells only.",
+    "GED remains an unthresholded local semantic-diversity diagnostic without a human-calibrated sufficiency threshold or non-inferiority margin."
+  ],
+  "judges_in_table_order": [
+    {
+      "display_alias": "GPT-OSS",
+      "judge_calls": 320,
+      "judge_model_alias": "gpt-oss:120b",
+      "judge_provider": "institutional_genai",
+      "key": "gpt_oss",
+      "selected_vs_reference_signs": {
+        "ged": {
+          "basis": "Point-estimate directions only; ties use absolute tolerance 1e-12. Counts are not significance tests.",
+          "comparisons": 5,
+          "selected_eq_reference_M": [],
+          "selected_eq_reference_count": 0,
+          "selected_gt_reference_M": [
+            4,
+            16,
+            64,
+            256,
+            1024
+          ],
+          "selected_gt_reference_count": 5,
+          "selected_lt_reference_M": [],
+          "selected_lt_reference_count": 0
+        },
+        "geq": {
+          "basis": "Point-estimate directions only; ties use absolute tolerance 1e-12. Counts are not significance tests.",
+          "comparisons": 5,
+          "selected_eq_reference_M": [],
+          "selected_eq_reference_count": 0,
+          "selected_gt_reference_M": [
+            16,
+            64,
+            256,
+            1024
+          ],
+          "selected_gt_reference_count": 4,
+          "selected_lt_reference_M": [
+            4
+          ],
+          "selected_lt_reference_count": 1
+        }
+      },
+      "source_artifacts": {
+        "pilot_results_csv_sha256": "008464aed66bf75c9045d0904ff955f7ae84908d4034cb3d3718e52ae153d99f",
+        "pilot_summary_sha256": "447409bcc2f419a367f85693f9567f784a7b219fe0998ef396a34f9877314ab8",
+        "private_judgments_sha256": "3aa443a19589a91bbf35bdf32b70f46e2dd763f081389d55c746d0a5ca34b53f"
+      },
+      "system_fingerprint": "vllm-0.25.1-f1656415"
+    },
+    {
+      "display_alias": "Gemma",
+      "judge_calls": 320,
+      "judge_model_alias": "gemma4:26b-a4b",
+      "judge_provider": "institutional_genai",
+      "key": "gemma",
+      "selected_vs_reference_signs": {
+        "ged": {
+          "basis": "Point-estimate directions only; ties use absolute tolerance 1e-12. Counts are not significance tests.",
+          "comparisons": 5,
+          "selected_eq_reference_M": [],
+          "selected_eq_reference_count": 0,
+          "selected_gt_reference_M": [
+            16
+          ],
+          "selected_gt_reference_count": 1,
+          "selected_lt_reference_M": [
+            4,
+            64,
+            256,
+            1024
+          ],
+          "selected_lt_reference_count": 4
+        },
+        "geq": {
+          "basis": "Point-estimate directions only; ties use absolute tolerance 1e-12. Counts are not significance tests.",
+          "comparisons": 5,
+          "selected_eq_reference_M": [],
+          "selected_eq_reference_count": 0,
+          "selected_gt_reference_M": [
+            16,
+            64,
+            256,
+            1024
+          ],
+          "selected_gt_reference_count": 4,
+          "selected_lt_reference_M": [
+            4
+          ],
+          "selected_lt_reference_count": 1
+        }
+      },
+      "source_artifacts": {
+        "pilot_results_csv_sha256": "2b4bbfec060dc996f46aa3def1b6a926f48fe8a86d5be3969362deb278aa7087",
+        "pilot_summary_sha256": "7e34797d3b32145209d825ec51bf0d36e093add86b97c500ad27c0dec2deaf53",
+        "private_judgments_sha256": "353957af909a328490a6b05d8ab755c6aac9d956ce59d59be6e8d86ebc245399"
+      },
+      "system_fingerprint": "vllm-0.25.1-346dcce7"
+    },
+    {
+      "display_alias": "Qwen",
+      "judge_calls": 320,
+      "judge_model_alias": "qwen3:32b",
+      "judge_provider": "institutional_genai",
+      "key": "qwen",
+      "selected_vs_reference_signs": {
+        "ged": {
+          "basis": "Point-estimate directions only; ties use absolute tolerance 1e-12. Counts are not significance tests.",
+          "comparisons": 5,
+          "selected_eq_reference_M": [],
+          "selected_eq_reference_count": 0,
+          "selected_gt_reference_M": [
+            4,
+            16,
+            64,
+            256,
+            1024
+          ],
+          "selected_gt_reference_count": 5,
+          "selected_lt_reference_M": [],
+          "selected_lt_reference_count": 0
+        },
+        "geq": {
+          "basis": "Point-estimate directions only; ties use absolute tolerance 1e-12. Counts are not significance tests.",
+          "comparisons": 5,
+          "selected_eq_reference_M": [],
+          "selected_eq_reference_count": 0,
+          "selected_gt_reference_M": [
+            4,
+            16,
+            64,
+            256,
+            1024
+          ],
+          "selected_gt_reference_count": 5,
+          "selected_lt_reference_M": [],
+          "selected_lt_reference_count": 0
+        }
+      },
+      "source_artifacts": {
+        "pilot_results_csv_sha256": "c181107648abe82d9255a9cb3992ee114390b4a211773d60ce796dd00df6a9bf",
+        "pilot_summary_sha256": "6be31d5ad6145f7ca29f0a1f430714affb46f66fb350961218ffe1e423cc931d",
+        "private_judgments_sha256": "e34fa50d089f067004bd8349e4ca4fbe54b251e2e12438794a48a47cc8ba65d9"
+      },
+      "system_fingerprint": null
+    }
+  ],
+  "results": [
+    {
+      "categorical_precision": "fp64",
+      "cell": "M4-reference",
+      "gemma_ged": 6.7595758842417615,
+      "gemma_geq": 2.9296875,
+      "gpt2_generative_perplexity": 2254.92822265625,
+      "gpt_oss_ged": 0.7929244394822885,
+      "gpt_oss_geq": 1.6552734375,
+      "operating_point": "reference",
+      "qwen_ged": 2.763768519166877,
+      "qwen_geq": 3.1494140625,
+      "temperature": 1.0,
+      "updates_M": 4,
+      "within_sequence_entropy": 5.9679274559021
+    },
+    {
+      "categorical_precision": "fp32",
+      "cell": "M4-selected",
+      "gemma_ged": 4.521420735648913,
+      "gemma_geq": 2.568359375,
+      "gpt2_generative_perplexity": 593.2630004882812,
+      "gpt_oss_ged": 1.1128636852130276,
+      "gpt_oss_geq": 1.533203125,
+      "operating_point": "selected",
+      "qwen_ged": 4.816728568727205,
+      "qwen_geq": 4.716796875,
+      "temperature": 0.9,
+      "updates_M": 4,
+      "within_sequence_entropy": 5.30734920501709
+    },
+    {
+      "categorical_precision": "fp64",
+      "cell": "M16-reference",
+      "gemma_ged": 8.899355597758406,
+      "gemma_geq": 4.94140625,
+      "gpt2_generative_perplexity": 357.5880432128906,
+      "gpt_oss_ged": 5.99978467465866,
+      "gpt_oss_geq": 3.8525390625,
+      "operating_point": "reference",
+      "qwen_ged": 7.275999107840233,
+      "qwen_geq": 5.2392578125,
+      "temperature": 1.0,
+      "updates_M": 16,
+      "within_sequence_entropy": 5.787248134613037
+    },
+    {
+      "categorical_precision": "fp32",
+      "cell": "M16-selected",
+      "gemma_ged": 9.237899413893478,
+      "gemma_geq": 5.2001953125,
+      "gpt2_generative_perplexity": 102.2225570678711,
+      "gpt_oss_ged": 7.5726451507094374,
+      "gpt_oss_geq": 4.35546875,
+      "operating_point": "selected",
+      "qwen_ged": 8.284940350262403,
+      "qwen_geq": 5.2783203125,
+      "temperature": 0.9,
+      "updates_M": 16,
+      "within_sequence_entropy": 5.350344657897949
+    },
+    {
+      "categorical_precision": "fp64",
+      "cell": "M64-reference",
+      "gemma_ged": 9.855424439482288,
+      "gemma_geq": 5.771484375,
+      "gpt2_generative_perplexity": 154.91139221191406,
+      "gpt_oss_ged": 8.281700569602762,
+      "gpt_oss_geq": 4.6875,
+      "operating_point": "reference",
+      "qwen_ged": 9.209674074333417,
+      "qwen_geq": 5.1171875,
+      "temperature": 1.0,
+      "updates_M": 64,
+      "within_sequence_entropy": 5.706737041473389
+    },
+    {
+      "categorical_precision": "fp32",
+      "cell": "M64-selected",
+      "gemma_ged": 8.929181888573861,
+      "gemma_geq": 6.11328125,
+      "gpt2_generative_perplexity": 41.26898956298828,
+      "gpt_oss_ged": 8.787958180556359,
+      "gpt_oss_geq": 5.0,
+      "operating_point": "selected",
+      "qwen_ged": 9.697329264351087,
+      "qwen_geq": 5.8544921875,
+      "temperature": 0.9,
+      "updates_M": 64,
+      "within_sequence_entropy": 5.2666754722595215
+    },
+    {
+      "categorical_precision": "fp64",
+      "cell": "M256-reference",
+      "gemma_ged": 9.527803873613406,
+      "gemma_geq": 6.2158203125,
+      "gpt2_generative_perplexity": 115.50682067871094,
+      "gpt_oss_ged": 8.672534064798121,
+      "gpt_oss_geq": 4.921875,
+      "operating_point": "reference",
+      "qwen_ged": 9.122473148666835,
+      "qwen_geq": 5.4736328125,
+      "temperature": 1.0,
+      "updates_M": 256,
+      "within_sequence_entropy": 5.656257152557373
+    },
+    {
+      "categorical_precision": "fp32",
+      "cell": "M256-selected",
+      "gemma_ged": 9.140869223875809,
+      "gemma_geq": 6.4208984375,
+      "gpt2_generative_perplexity": 28.0842227935791,
+      "gpt_oss_ged": 9.024689619964661,
+      "gpt_oss_geq": 5.9912109375,
+      "operating_point": "selected",
+      "qwen_ged": 9.57760926016696,
+      "qwen_geq": 6.9189453125,
+      "temperature": 0.9,
+      "updates_M": 256,
+      "within_sequence_entropy": 5.126865386962891
+    },
+    {
+      "categorical_precision": "fp64",
+      "cell": "M1024-reference",
+      "gemma_ged": 9.511044478340274,
+      "gemma_geq": 6.1328125,
+      "gpt2_generative_perplexity": 107.07623291015625,
+      "gpt_oss_ged": 8.074212699371913,
+      "gpt_oss_geq": 5.146484375,
+      "operating_point": "reference",
+      "qwen_ged": 9.530063889666918,
+      "qwen_geq": 5.771484375,
+      "temperature": 1.0,
+      "updates_M": 1024,
+      "within_sequence_entropy": 5.626251220703125
+    },
+    {
+      "categorical_precision": "fp32",
+      "cell": "M1024-selected",
+      "gemma_ged": 9.274523683595737,
+      "gemma_geq": 6.42578125,
+      "gpt2_generative_perplexity": 21.759946823120117,
+      "gpt_oss_ged": 8.749697230918258,
+      "gpt_oss_geq": 5.46875,
+      "operating_point": "selected",
+      "qwen_ged": 9.798803143315665,
+      "qwen_geq": 7.67578125,
+      "temperature": 0.9,
+      "updates_M": 1024,
+      "within_sequence_entropy": 5.011575698852539
+    }
+  ]
+}

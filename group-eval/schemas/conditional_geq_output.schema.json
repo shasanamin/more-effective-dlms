@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/groupeval/conditional_geq_output.schema.json",
+  "title": "Conditional large-DLM GEQ judge output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "group_id", "samples", "group_warnings"],
+  "properties": {
+    "protocol_version": {"const": "1.0.0-conditional-large-dlm"},
+    "group_id": {"type": "string", "minLength": 1, "maxLength": 200},
+    "samples": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"$ref": "#/$defs/sample"}
+    },
+    "group_warnings": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {"type": "string", "minLength": 1, "maxLength": 180}
+    }
+  },
+  "$defs": {
+    "score012": {"type": "integer", "minimum": 0, "maximum": 2},
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "readability",
+        "reasoning_coherence",
+        "task_success",
+        "nondegeneration_structure"
+      ],
+      "properties": {
+        "readability": {"$ref": "#/$defs/score012"},
+        "reasoning_coherence": {"$ref": "#/$defs/score012"},
+        "task_success": {"$ref": "#/$defs/score012"},
+        "nondegeneration_structure": {"$ref": "#/$defs/score012"}
+      }
+    },
+    "sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sample_id",
+        "valid",
+        "invalid_reason",
+        "quality",
+        "evidence",
+        "severe_degeneration",
+        "prompt_injection_detected"
+      ],
+      "properties": {
+        "sample_id": {"type": "string", "pattern": "^S[12]$"},
+        "valid": {"type": "boolean"},
+        "invalid_reason": {
+          "anyOf": [
+            {"type": "null"},
+            {
+              "type": "string",
+              "enum": [
+                "empty_or_nearly_empty",
+                "predominantly_gibberish_or_token_corruption",
+                "catastrophic_unreadability",
+                "no_interpretable_task_response"
+              ]
+            }
+          ]
+        },
+        "quality": {"$ref": "#/$defs/quality"},
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {"type": "string", "minLength": 1, "maxLength": 160}
+        },
+        "severe_degeneration": {"type": "boolean"},
+        "prompt_injection_detected": {"type": "boolean"}
+      }
+    }
+  }
+}
